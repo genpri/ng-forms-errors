@@ -1,25 +1,41 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
+} from "@angular/core";
 
 @Component({
-  template: `<p class="help is-danger" [class.hide]="_hide">{{_text}}</p>`,
+  template: `
+    <p class="help is-danger" [class.hide]="hide">{{ text }}</p>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./control-error.component.css']
+  styles: [
+    `
+      .hide {
+        display: none;
+      }
+    `
+  ]
 })
 export class ControlErrorComponent implements OnInit {
-  _text;
-  _hide = true;
+  private _text;
+  hide = true;
 
   @Input() set text(value) {
     if (value !== this._text) {
       this._text = value;
-      this._hide = !value;
+      this.hide = !value;
       this.cdr.detectChanges();
     }
-  };
-
-  constructor(private cdr: ChangeDetectorRef) { }
-
-  ngOnInit() {
   }
 
+  get text(): string {
+    return this._text;
+  }
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngOnInit() {}
 }
