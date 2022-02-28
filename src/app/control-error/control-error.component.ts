@@ -3,24 +3,22 @@ import {
   OnInit,
   Input,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
-} from "@angular/core";
+  ChangeDetectorRef,
+} from '@angular/core';
 
 @Component({
-  template: `
-    <p class="help is-danger" [class.hide]="hide">{{ text }}</p>
-  `,
+  template: ` <p class="help is-danger" [class.hide]="hide">{{ text }}</p> `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `
       .hide {
         display: none;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class ControlErrorComponent implements OnInit {
-  private _text;
+  private _text = '';
   hide = true;
 
   @Input() set text(value) {

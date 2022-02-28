@@ -1,23 +1,15 @@
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { ReactiveFormsModule } from "@angular/forms";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from "./app.component";
-import { ControlErrorsDirective } from "./control-errors.directive";
-import { ControlErrorComponent } from "./control-error/control-error.component";
-import { ControlErrorContainerDirective } from "./control-error-container.directive";
-import { FormSubmitDirective } from "./form-submit.directive";
+import { AppComponent } from './app.component';
+import { ControlErrorsDirective } from './control-errors.directive';
 
 @NgModule({
-  imports: [BrowserModule, ReactiveFormsModule],
-  declarations: [
-    AppComponent,
-    ControlErrorsDirective,
-    ControlErrorComponent,
-    ControlErrorContainerDirective,
-    FormSubmitDirective
-  ],
-  entryComponents: [ControlErrorComponent],
-  bootstrap: [AppComponent]
+  declarations: [AppComponent, ControlErrorsDirective],
+  imports: [BrowserModule, CommonModule, ReactiveFormsModule],
+  providers: [],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
